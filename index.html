@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can SQRA fix what Essentials shows?</title>
+<style>
+  :root{
+    --bg:#f6f8fa; --card:#fff; --ink:#1a2029; --muted:#5b6673; --faint:#9aa5b1;
+    --line:#e4e8ee; --fix:#2da44e; --fixsoft:#d9f0e0; --no:#d0d7de; --nosoft:#eef1f4;
+    --accent:#0969da;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 28px 90px}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  h1{font-size:30px;line-height:1.2;font-weight:750;letter-spacing:-.6px;margin:0 0 14px}
+  .lede{font-size:17px;color:var(--muted);margin:0 0 36px;max-width:680px}
+  .lede b{color:var(--ink);font-weight:650}
+
+  /* verdict split */
+  .split{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:30px 32px;margin-bottom:20px;box-shadow:0 1px 2px rgba(27,31,36,.04)}
+  .split h2{font-size:14px;font-weight:600;color:var(--muted);margin:0 0 20px;text-align:center}
+  .splitbar{display:flex;height:64px;border-radius:12px;overflow:hidden;margin-bottom:16px}
+  .splitbar .seg{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+  .splitbar .seg.fix{background:var(--fix)}
+  .splitbar .seg.no{background:#aeb7c2}
+  .splitbar .seg b{font-size:22px;font-weight:730;line-height:1}
+  .splitbar .seg span{font-size:12px;opacity:.92;margin-top:3px}
+  .splitkey{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted)}
+  .splitkey b{color:var(--ink)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;
+    box-shadow:0 1px 2px rgba(27,31,36,.04)}
+  .stat .big{font-size:44px;font-weight:760;letter-spacing:-1px;line-height:1}
+  .stat.green .big{color:var(--fix)}
+  .stat.grey .big{color:#8a94a0}
+  .stat .cap{font-size:15px;font-weight:600;margin:10px 0 4px}
+  .stat .exp{font-size:13.5px;color:var(--muted)}
+
+  .section-h{font-size:19px;font-weight:700;margin:0 0 4px;letter-spacing:-.3px}
+  .section-s{font-size:14px;color:var(--muted);margin:0 0 22px}
+
+  .langblock{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:26px 30px;margin-bottom:20px;box-shadow:0 1px 2px rgba(27,31,36,.04)}
+  .grouplbl{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin:0 0 16px}
+  .grouplbl .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;text-transform:none;letter-spacing:0}
+  .pill.g{background:var(--fixsoft);color:#1a7f37}
+  .pill.n{background:var(--nosoft);color:#57606a}
+  .lrow{display:flex;align-items:center;gap:14px;margin:0 0 11px}
+  .lrow .name{width:110px;flex:none;font-size:14px;font-weight:550}
+  .lrow .bar{flex:1;height:26px;background:#f0f2f5;border-radius:6px;overflow:hidden;position:relative}
+  .lrow .bar .fillg{height:100%;background:var(--fix);border-radius:6px}
+  .lrow .bar .filln{height:100%;background:#c6cdd6;border-radius:6px}
+  .lrow .val{width:120px;flex:none;text-align:right;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .lrow .val b{color:var(--ink);font-weight:650}
+  .more{font-size:13px;color:var(--faint);margin-top:6px}
+
+  .note{font-size:12.5px;color:var(--faint);margin-top:30px;line-height:1.7;
+    border-top:1px solid var(--line);padding-top:18px}
+  .note b{color:var(--muted)}
+</style></head><body>
+<div class="wrap">
+
+  <p class="eyebrow">Sonar way essentials &times; Remediation Agent (SQRA)</p>
+  <h1>Can SQRA fix the issues that Essentials shows users?</h1>
+  <p class="lede">Essentials is the rule set that decides what a new user sees. SQRA is the agent that auto-fixes issues. This board answers one thing: <b>of the 3,694 rules in Essentials, how many can SQRA actually fix?</b></p>
+
+  <div class="split">
+    <h2>All 3,694 Essentials rules</h2>
+    <div class="splitbar">
+      <div class="seg fix" style="width:40.9%">
+        <b>1,512</b><span>SQRA can fix</span></div>
+      <div class="seg no" style="width:59.1%">
+        <b>2,182</b><span>SQRA cannot fix</span></div>
+    </div>
+    <div class="splitkey">
+      <span><span class="dot" style="background:var(--fix)"></span><b>41%</b> fixable &mdash; in a supported language</span>
+      <span><b>59%</b> not fixable &mdash; unsupported language <span class="dot" style="background:#aeb7c2;margin-left:7px"></span></span>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="stat green">
+      <div class="big">99.7%</div>
+      <div class="cap">Coverage in the 5 languages SQRA knows</div>
+      <div class="exp">Java, JavaScript, TypeScript, Python, Secrets. Of 1,516 Essentials rules there, SQRA fixes 1,512. Just 4 are blocked (all &ldquo;cognitive complexity&rdquo;).</div>
+    </div>
+    <div class="stat grey">
+      <div class="big">2,178</div>
+      <div class="cap">Essentials rules SQRA can&rsquo;t touch</div>
+      <div class="exp">They live in 45 other languages &mdash; C++, C#, Go, PHP, IaC and more &mdash; that SQRA doesn&rsquo;t support yet. This is the whole gap.</div>
+    </div>
+  </div>
+
+  <p class="section-h">The takeaway</p>
+  <p class="section-s">SQRA&rsquo;s limit is <b>which languages it supports</b>, not which rules are too hard. Inside its languages it fixes almost everything Essentials surfaces; the 59% it misses is entirely other languages.</p>
+
+  <div class="langblock">
+    <div class="grouplbl"><span class="pill g">Supported by SQRA</span> Share of each language&rsquo;s Essentials rules SQRA can fix</div>
+    <div class="lrow"><div class="name">Secrets</div>
+      <div class="bar"><div class="fillg" style="width:100.0%"></div></div>
+      <div class="val"><b>100%</b> &middot; 338/338</div></div>
+    <div class="lrow"><div class="name">Java</div>
+      <div class="bar"><div class="fillg" style="width:99.7%"></div></div>
+      <div class="val"><b>99.7%</b> &middot; 327/328</div></div>
+    <div class="lrow"><div class="name">Python</div>
+      <div class="bar"><div class="fillg" style="width:99.7%"></div></div>
+      <div class="val"><b>99.7%</b> &middot; 319/320</div></div>
+    <div class="lrow"><div class="name">JavaScript</div>
+      <div class="bar"><div class="fillg" style="width:99.6%"></div></div>
+      <div class="val"><b>99.6%</b> &middot; 268/269</div></div>
+    <div class="lrow"><div class="name">TypeScript</div>
+      <div class="bar"><div class="fillg" style="width:99.6%"></div></div>
+      <div class="val"><b>99.6%</b> &middot; 260/261</div></div>
+  </div>
+
+  <div class="langblock">
+    <div class="grouplbl"><span class="pill n">Not supported</span> 0% fixable in every one &mdash; bar length shows how many Essentials rules go unfixed (top 12 of 45)</div>
+    <div class="lrow"><div class="name">Jupyter</div>
+      <div class="bar"><div class="filln" style="width:100.0%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/275</div></div>
+    <div class="lrow"><div class="name">C++</div>
+      <div class="bar"><div class="filln" style="width:83.3%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/229</div></div>
+    <div class="lrow"><div class="name">C#</div>
+      <div class="bar"><div class="filln" style="width:76.7%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/211</div></div>
+    <div class="lrow"><div class="name">C</div>
+      <div class="bar"><div class="filln" style="width:46.5%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/128</div></div>
+    <div class="lrow"><div class="name">Objective-C</div>
+      <div class="bar"><div class="filln" style="width:46.2%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/127</div></div>
+    <div class="lrow"><div class="name">PHP</div>
+      <div class="bar"><div class="filln" style="width:40.4%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/111</div></div>
+    <div class="lrow"><div class="name">VB.NET</div>
+      <div class="bar"><div class="filln" style="width:37.5%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/103</div></div>
+    <div class="lrow"><div class="name">Kotlin</div>
+      <div class="bar"><div class="filln" style="width:30.5%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/84</div></div>
+    <div class="lrow"><div class="name">PL/SQL</div>
+      <div class="bar"><div class="filln" style="width:22.9%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/63</div></div>
+    <div class="lrow"><div class="name">Rust</div>
+      <div class="bar"><div class="filln" style="width:22.9%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/63</div></div>
+    <div class="lrow"><div class="name">Apex</div>
+      <div class="bar"><div class="filln" style="width:21.1%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/58</div></div>
+    <div class="lrow"><div class="name">Go</div>
+      <div class="bar"><div class="filln" style="width:18.2%"></div></div>
+      <div class="val"><b>0%</b> &middot; 0/50</div></div>
+    <div class="more">+ 32 more languages (676 additional Essentials rules SQRA can&rsquo;t fix)</div>
+  </div>
+
+  <p class="note">
+  <b>How this was computed.</b> Essentials membership pulled live from SonarCloud (default Sonar way profiles) &mdash; a rule is kept if any Clean Code impact is Security (any), Reliability &ge; Medium, or Maintainability &ge; High. SQRA-fixable = the 5 supported languages minus the published blocklist (Java 7, JS 5, TS 5, Python 4, Secrets 0). C# blocklist rules in the docs are ignored because C# isn&rsquo;t an SQRA language yet.<br>
+  Both lists are <b>derived, not fixed</b> &mdash; they move as rules, impacts, or the blocklist change. Snapshot taken today.
+  </p>
+
+</div></body></html>
